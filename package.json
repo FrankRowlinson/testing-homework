@@ -4,9 +4,9 @@
   "scripts": {
     "start": "nodemon ./src/server/index.ts",
     "test:unit": "jest",
-    "test:e2e": ".\\node_modules\\.bin\\hermione",
-    "test:e2e:gui": ".\\node_modules\\.bin\\hermione gui",
-    "test": "npm run test:unit && npm run test:e2e",
+    "test:e2e": ".\\node_modules\\.bin\\hermione --require ts-node/register",
+    "test:e2e:gui": ".\\node_modules\\.bin\\hermione gui --require ts-node/register",
+    "test": "npm run test:unit && npm run test:e2e --require ts-node/register",
     "build": "webpack --mode=production --node-env=production",
     "watch": "webpack --watch"
   },
@@ -19,6 +19,7 @@
     "faker": "^5.5.3",
     "html-reporter": "^9.7.1",
     "immer": "^9.0.6",
+    "puppeteer": "^20.7.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0",

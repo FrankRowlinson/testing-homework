@@ -1,7 +1,7 @@
-import { initCatalog } from "./helpers/initCatalog";
+import { initCatalog } from "../helpers/initCatalog";
 import { render, screen, waitFor, within } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
-import { MOCK_PRODUCT_IDS, getExampleProduct } from "./helpers/productUtils";
+import { MOCK_PRODUCT_IDS, getExampleProduct } from "../helpers/productUtils";
 
 describe("Каталог", () => {
   it("отображаются нужные поля в карточках товаров (название, цена, ссылка)", async () => {

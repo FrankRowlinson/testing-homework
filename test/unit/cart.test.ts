@@ -1,10 +1,10 @@
 import { render, screen, within, waitFor } from "@testing-library/react";
-import { initCart } from "./helpers/initCart";
+import { initCart } from "../helpers/initCart";
 import userEvent from "@testing-library/user-event";
-import { countCartTotal } from "./helpers/productUtils";
-import { initForm } from "./helpers/initForm";
+import { countCartTotal } from "../helpers/productUtils";
+import { initForm } from "../helpers/initForm";
 import "@testing-library/jest-dom/extend-expect";
-import { fillSecondaryFields, getFormElements } from "./helpers/formHelpers";
+import { fillSecondaryFields, getFormElements } from "../helpers/formHelpers";
 
 const user = userEvent.setup();
 

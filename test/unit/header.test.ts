@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { initApp } from "./helpers/initApp";
+import { initApp } from "../helpers/initApp";
 
 const basename: string = "/";
 

@@ -1,10 +1,10 @@
 import React from "react";
 
-import { ExampleApi } from "./../../../src/client/api";
-import { Application } from "./../../../src/client/Application";
+import { ExampleApi } from "../../src/client/api";
+import { Application } from "../../src/client/Application";
 import { MemoryRouter } from "react-router-dom";
 import { Provider } from "react-redux";
-import { initStore } from "../../../src/client/store";
+import { initStore } from "../../src/client/store";
 import { getPremadeCart } from "./productUtils";
 import { MockCartApi } from "./mocks";
 

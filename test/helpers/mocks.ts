@@ -1,10 +1,10 @@
-import { ExampleApi } from "../../../src/client/api";
+import { ExampleApi } from "../../src/client/api";
 import {
   CartState,
   CheckoutFormData,
   Product,
   ProductShortInfo,
-} from "../../../src/common/types";
+} from "../../src/common/types";
 import { getExampleProducts } from "./productUtils";
 
 export class MockCartApi {

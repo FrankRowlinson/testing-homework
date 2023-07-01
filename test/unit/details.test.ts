@@ -1,7 +1,7 @@
-import { initCatalog } from "./helpers/initCatalog";
+import { initCatalog } from "../helpers/initCatalog";
 import { render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
-import { getExampleProduct } from "./helpers/productUtils";
+import { getExampleProduct } from "../helpers/productUtils";
 import userEvent from "@testing-library/user-event";
 
 const user = userEvent.setup();

@@ -1,4 +1,4 @@
-import { initPage } from "./helpers/initPage";
+import { initPage } from "../helpers/initPage";
 import { render } from "@testing-library/react";
 
 describe("Страницы", () => {

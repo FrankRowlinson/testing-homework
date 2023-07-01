@@ -1,4 +1,4 @@
-import { CartState, Product } from "../../../src/common/types";
+import { CartState, Product } from "../../src/common/types";
 
 export const MOCK_PRODUCT_IDS = new Array(6)
   .fill(0)

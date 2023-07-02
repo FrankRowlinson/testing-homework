@@ -1,6 +1,6 @@
 const baseUrl = "http://localhost:3000/hw/store";
 // извини за полчище данных, которые можно было бы вынести в отдельный файл
-// так и не разобрался с ошибками импорта модулей для .js гермионы
+// так и не разобрался с ошибками импорта вне модуля для .js файла гермионы
 const singleProduct = {
   id: 30,
   name: "puppy",
@@ -72,6 +72,7 @@ describe("Каталог", async () => {
     await page.goto(`${baseUrl}/catalog/30`);
 
     await page.waitForSelector(".btn.btn-primary");
+    await browser.mockRestoreAll();
     await browser.assertView("plain", "body");
   });
 
@@ -86,6 +87,7 @@ describe("Каталог", async () => {
     await page.goto(`${baseUrl}/catalog`);
 
     await page.waitForSelector(".card-body");
+    await browser.mockRestoreAll();
     await browser.assertView("plain", "body");
   });
 });

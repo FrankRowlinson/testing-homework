@@ -28,7 +28,7 @@ export function getFormElements(
   return { nameInput, phoneInput, addressInput, submitButton };
 }
 
-export async function fillSecondaryFields(
+export async function prefillFields(
   user: UserEvent,
   nameInput?: HTMLElement,
   phoneInput?: HTMLElement,

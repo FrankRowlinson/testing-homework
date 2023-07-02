@@ -46,10 +46,10 @@ export class MockExampleApi extends ExampleApi {
     const product: Product = this.products.filter(
       (product) => product.id === id
     )[0];
-    return Promise.resolve({ data: product });
+    return await Promise.resolve({ data: product });
   }
 
   async checkout(form: CheckoutFormData, cart: CartState): Promise<any> {
-    return Promise.resolve();
+    return await Promise.resolve({ data: { id: 1 } });
   }
 }

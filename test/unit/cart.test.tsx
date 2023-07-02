@@ -1,10 +1,12 @@
-import { render, screen, within, waitFor } from "@testing-library/react";
+import React from "react";
+
+import { render, screen, waitFor, within } from "@testing-library/react";
 import { initCart } from "../helpers/initCart";
 import userEvent from "@testing-library/user-event";
 import { countCartTotal } from "../helpers/productUtils";
-import { initForm } from "../helpers/initForm";
+import { initForm, initMockForm } from "../helpers/initForm";
 import "@testing-library/jest-dom/extend-expect";
-import { fillSecondaryFields, getFormElements } from "../helpers/formHelpers";
+import { getFormElements, prefillFields } from "../helpers/formHelpers";
 
 const user = userEvent.setup();
 
@@ -84,7 +86,7 @@ describe("Проверка корзины", () => {
     expect(cellWithTotal).toBeTruthy();
   });
 
-  describe("Проверка валидации формы", () => {
+  describe("Проверка формы", () => {
     it("валидация номера телефона работает корректно", async () => {
       const WRONG_NUMBER = "abcdefg";
       const CORRECT_NUMBER = "1111111111111";
@@ -96,7 +98,7 @@ describe("Проверка корзины", () => {
       const { nameInput, phoneInput, addressInput, submitButton } =
         getFormElements(getByRole, getByTestId);
 
-      await fillSecondaryFields(user, nameInput, undefined, addressInput);
+      await prefillFields(user, nameInput, undefined, addressInput);
 
       await user.type(phoneInput, WRONG_NUMBER);
       await user.click(submitButton);
@@ -105,6 +107,27 @@ describe("Проверка корзины", () => {
       await user.type(phoneInput, CORRECT_NUMBER);
       await user.click(submitButton);
       expect(onSubmit).toBeCalled();
+    });
+
+    it("Отправка формы работает корректно (без учета валидации)", async () => {
+      const { app, store } = initMockForm();
+      const { getByTestId } = render(app);
+
+      const button = getByTestId("submit");
+      await user.click(button);
+
+      expect(store.getState().latestOrderId).toBe(1);
+    });
+
+    it("По созданию заказа отрисовывается корректное подтверждение", async () => {
+      const REF_ORDER_ID = "1";
+      const { app } = initCart(false, true);
+      const { container } = render(app);
+
+      await waitFor(() =>
+        expect(screen.queryByText(REF_ORDER_ID)).toBeInTheDocument()
+      );
+      expect(container.innerHTML).toMatch(/alert-success/g);
     });
   });
 });
